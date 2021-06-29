@@ -19,28 +19,26 @@ public class Main {
         int exNumber = Integer.parseInt(bufferedReader.readLine());
         switch (exNumber) {
             case 2:
-                exTwo();
+                exerciseTwo();
             case 3:
-                exThree();
+                exerciseThree();
             case 4:
-                exFour();
+                exerciseFour();
             case 5:
-                exFive();
+                exerciseFive();
             case 6:
-                exSix();
+                exerciseSix();
             case 7:
-                exSeven();
+                exerciseSeven();
             case 8:
-                exEight();
+                exerciseEight();
             case 9:
-                exNine();
+                exerciseNine();
         }
-
-
 
     }
 
-    private static void exTwo() throws SQLException {
+    private static void exerciseTwo() throws SQLException {
         PreparedStatement preparedStatement =
                 connection.prepareStatement("SELECT v.`name` ,COUNT(DISTINCT mv.minion_id) as `m_count` FROM villains as v\n" +
                         "JOIN minions_villains mv on v.id = mv.villain_id\n" +
@@ -59,7 +57,7 @@ public class Main {
         }
     }
 
-    private static void exThree() throws IOException, SQLException {
+    private static void exerciseThree() throws IOException, SQLException {
         System.out.println("Enter Villain id");
         int id = Integer.parseInt(bufferedReader.readLine());
 
@@ -84,7 +82,7 @@ public class Main {
         }
     }
 
-    private static void exFour() throws IOException, SQLException {
+    private static void exerciseFour() throws IOException, SQLException {
 
         System.out.println("Enter input.");
 
@@ -216,7 +214,7 @@ public class Main {
 
     }
 
-    private static void exFive() throws IOException, SQLException {
+    private static void exerciseFive() throws IOException, SQLException {
         System.out.println("Enter county name.");
         String countryName = bufferedReader.readLine();
 
@@ -246,7 +244,7 @@ public class Main {
 
     }
 
-    private static void exSix() throws SQLException, IOException {
+    private static void exerciseSix() throws SQLException, IOException {
 
         System.out.println("Enter villain id.");
         int id = Integer.parseInt(bufferedReader.readLine());
@@ -265,7 +263,6 @@ public class Main {
         System.out.printf("%s was deleted%n" +
                 "%d minions released%n", villainsName, affectedEntities);
 
-
     }
 
     private static void deleteEntityById(int villainId) throws SQLException {
@@ -283,7 +280,7 @@ public class Main {
         return preparedStatement.executeUpdate();
     }
 
-    private static void exSeven() throws SQLException {
+    private static void exerciseSeven() throws SQLException {
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement("SELECT name FROM minions");
@@ -308,7 +305,7 @@ public class Main {
         }
     }
 
-    private static void exEight() throws IOException, SQLException {
+    private static void exerciseEight() throws IOException, SQLException {
         System.out.println("Enter minions id in one line separated by space.");
         String[] input = bufferedReader.readLine().split("\\s+");
 
@@ -332,7 +329,7 @@ public class Main {
         }
     }
 
-    private static void exNine() throws IOException {
+    private static void exerciseNine() throws IOException {
         System.out.println("You must have Procedure with name usp_get_older");
         System.out.println("Enter minion id.");
         int minionId = Integer.parseInt(bufferedReader.readLine());
