@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 public @interface Column {
 
     String name();
-    String columnDefinition();
+    String columnDefinition() default "";
 }

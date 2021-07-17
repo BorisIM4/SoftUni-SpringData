@@ -28,7 +28,7 @@ public class EntityManagerFactory {
 
         List<Class<?>> classes = getEntities(mainClass);
 
-//        createTables(connection, classes);
+        //createTables(connection, classes);
 
         return new EntityManagerImpl(connection);
     }
@@ -37,14 +37,6 @@ public class EntityManagerFactory {
         for (Class<?> classInfo : classes) {
             Entity entityInfo = (Entity) classInfo.getAnnotation(Entity.class);
             String sql = "CREATE TABLE ";
-
-            //create table test_table
-            //(
-            //	id int auto_increment,
-            //	name varchar(255) null,
-            //	constraint test_table_pk
-            //		primary key (id)
-            //);
 
             String tableName = entityInfo.tableName();
 
@@ -103,7 +95,5 @@ public class EntityManagerFactory {
             }
         }
     }
-
-
 
 }
