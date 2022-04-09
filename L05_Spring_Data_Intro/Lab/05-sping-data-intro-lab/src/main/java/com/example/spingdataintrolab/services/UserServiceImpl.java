@@ -6,6 +6,8 @@ import com.example.spingdataintrolab.repositories.AccountRepository;
 import com.example.spingdataintrolab.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -17,11 +19,21 @@ public class UserServiceImpl implements UserService {
         this.accountRepository = accountRepository;
     }
 
+
     @Override
-    public void registerUser(User user, Account account) {
+    public void registerUser(String username, int age, BigDecimal initialAmount) {
+        //Create User
+        var user = new User();
+        user.setUsername(username);
+        user.setAge(age);
 
         this.userRepository.save(user);
 
-        this.accountRepository.save(account);
+        //Create Account
+        var firstAccount = new Account();
+        firstAccount.setUser(user);
+        firstAccount.setAmount(initialAmount);
+
+        this.accountRepository.save(firstAccount);
     }
 }

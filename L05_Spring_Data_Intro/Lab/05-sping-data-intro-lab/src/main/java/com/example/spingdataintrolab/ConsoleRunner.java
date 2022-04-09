@@ -20,14 +20,11 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User user = new User();
-        user.setUsername("Boris");
-        user.setAge(30);
+        this.userService.registerUser(
+                "Anni",
+                6,
+                new BigDecimal(100)
+        );
 
-        Account account = new Account();
-        account.setUser(user);
-        account.setAmount(new BigDecimal(2550));
-
-        this.userService.registerUser(user, account);
     }
 }

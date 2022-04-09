@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 
 public interface UserService {
 
-    void registerUser(User user,  Account account);
+    void registerUser(String username,  int age, BigDecimal initialAmount);
 }
