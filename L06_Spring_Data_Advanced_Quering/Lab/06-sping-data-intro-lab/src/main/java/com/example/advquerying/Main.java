@@ -63,12 +63,22 @@ public class Main implements CommandLineRunner {
 //        List<String> namesOfIngredients = Arrays.asList("Berry", "Mineral-Collagen");
 //        this.shampooService.findAllByIngredientsName(namesOfIngredients).forEach(System.out::println);
 
-        System.out.println("Task 7");
-        System.out.println("Enter count");
-        int countOfIngredients = Integer.parseInt(scanner.nextLine());
-        this.shampooService.findAllByIngredientsCount(countOfIngredients).forEach(System.out::println);
+//        System.out.println("Task 8");
+//        System.out.println("Enter count");
+//        int countOfIngredients = Integer.parseInt(scanner.nextLine());
+//        this.shampooService.findAllByIngredientsCount(countOfIngredients).forEach(System.out::println);
 
+//        System.out.println("Task 9");
+//        System.out.println("Enter Name");
+//        String nameForDeletion = scanner.nextLine();
+//        System.out.println("Deleted rows: " + this.ingredientService.deleteAllByName(nameForDeletion));
 
+//        System.out.println("Task 10");
+//        this.ingredientService.increaseAllPricesWith10Percents();
+//        System.out.println("SUCCESS");
 
+        System.out.println("Task 11");
+        List<String> names = Arrays.asList("Lavender", "Herbs");
+        this.ingredientService.updatesPriceByName(BigDecimal.valueOf(1.2), names);
     }
 }
