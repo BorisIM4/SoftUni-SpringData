@@ -13,9 +13,8 @@ import softuni.exam.util.ValidationUtil;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Stream;
 
 @Service
 public class CityServiceImpl implements CityService {
@@ -52,21 +51,25 @@ public class CityServiceImpl implements CityService {
         CitySeedDto[] citySeedDtos = gson
                 .fromJson(readCitiesFileContent(), CitySeedDto[].class);
 
+        Map<String, CitySeedDto> citySeedDtoMap = new LinkedHashMap<>();
 
-//        CitySeedDto[] unique = Arrays.stream(citySeedDtos).distinct().toArray(CitySeedDto[]::new);
+        for (CitySeedDto citySeedDto : citySeedDtos) {
+            String name = citySeedDto.getCityName();
+            citySeedDtoMap.put(name, citySeedDto);
+        }
 
-        Arrays.stream(citySeedDtos)
-                .filter(citySeedDto -> {
-                    boolean isValid = validationUtil.isValid(citySeedDto);
-                    sb.append(isValid ? String.format("Successfully imported city %s - %d"
-                            , citySeedDto.getCityName()
-                            , citySeedDto.getPopulation())
-                            : "Invalid city")
-                            .append(System.lineSeparator());
-                    return isValid;
-                })
-                .map(citySeedDto -> modelMapper.map(citySeedDto, City.class))
-                .forEach(this.cityRepository::save);
+        citySeedDtoMap.forEach((s, citySeedDto) -> {
+            boolean isValid = validationUtil.isValid(citySeedDto);
+
+            sb.append(isValid ? String.format("Successfully imported city %s - %d",
+                    citySeedDto.getCityName(),
+                    citySeedDto.getPopulation())
+                    : "Invalid city")
+                    .append(System.lineSeparator());
+        });
+
+        System.out.println();
+
 
         return sb.toString();
     }

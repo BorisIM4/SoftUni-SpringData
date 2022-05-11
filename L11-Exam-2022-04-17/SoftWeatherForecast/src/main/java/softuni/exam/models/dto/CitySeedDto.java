@@ -2,6 +2,7 @@ package softuni.exam.models.dto;
 
 import com.google.gson.annotations.Expose;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
