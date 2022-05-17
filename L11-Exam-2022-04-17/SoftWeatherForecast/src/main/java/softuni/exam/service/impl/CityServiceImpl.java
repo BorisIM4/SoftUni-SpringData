@@ -59,6 +59,9 @@ public class CityServiceImpl implements CityService {
         }
 
         citySeedDtoMap.forEach((s, citySeedDto) -> {
+
+
+
             boolean isValid = validationUtil.isValid(citySeedDto);
 
             sb.append(isValid ? String.format("Successfully imported city %s - %d",
